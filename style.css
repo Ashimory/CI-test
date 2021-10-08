@@ -1,0 +1,28 @@
+body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+.container > h1{
+    color: white;
+    border-radius: 6px;
+}
+#result{
+    margin-top: 10vh;
+    
+    font-size: large;
+    text-align: center;
+    border-radius: 6px;
+}
+.hidden{
+    display: none;
+}
+.lmao{
+    position: absolute;
+    bottom: 0%;
+    color: chartreuse;
+}
+.link{
+    color: chartreuse;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL shortener</title>
+    <link rel="shortcut icon" href="pikaicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shorten your URLs here!</h1>
+        <input type="text" name="url" id="url">
+        <button id="submit">Submit</button>
+        <div id="result" class="hidden">
+            <div>Your URL is: </div>
+        </div>
+        <a class="lmao" href="https://shrtco.de">Or just go to https://shrtco.de lol</a>
+    </div>
+    <script>
+        document.getElementById("submit").addEventListener("click", async (e) => {
+            e.preventDefault()
+            let target = "https://api.shrtco.de/v2/shorten?url=" + document.getElementById("url").value;
+            let res = await fetch(target).then(response => response.json()).then((data) => data.result.full_short_link);
+            let $result =  document.getElementById("result")
+            $result.classList.remove("hidden");
+            let $link = document.createElement("a");
+            $link.classList.add("link")
+            $link.href = res;
+            $link.textContent = res;
+            $result.append($link);
+        })
+    </script>
+</body>
+</html>
